@@ -1,0 +1,46 @@
+<form id="cd-frm" action="#">
+
+    <legend>Craft Demo Invoice</legend>
+    <fieldset id="fd-invoice">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" value="<%= name %>" id="name" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" value="<%= email %>" id="email" />
+        </div>
+        <div class="form-group">
+            <label for="due-date">Due Date</label>
+            <input type="text" value="<%= dueDate %>" id="due-date" />
+        </div>
+    </fieldset>
+
+    <fieldset id="fd-invoice2">
+        <%
+        var item = {};
+        for( var i=0, len = descriptionAmount.length; i < len; i++ ) {
+          item = descriptionAmount[i];
+        %>
+            <div class="form-group">
+                <label for="desc-<%= i %>">Description</label>
+                <input type="text" value="<%= item.description %>" id="desc-<%= i %>" />
+
+                <label for="amount-<%= i %>">Amount</label>
+                <input class="amount" type="text" value="<%= item.amount %>" id="amount-<%= i %>" />
+            </div>
+            <% } %>
+    </fieldset>
+
+    <fieldset id="fd-invoice3">
+        <div class="form-group">
+            <button type="button" name="button" id="add-line">+</button>
+        </div>
+    </fieldset>
+
+    <div class="col-sm-6">
+        <p> <b>Total</b> <span id="running-total">$0.00</span></p>
+        <input type="button" id="send-value" value="send" />
+    </div>
+
+</form>
